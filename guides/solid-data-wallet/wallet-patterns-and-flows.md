@@ -1,9 +1,10 @@
 ---
-icon: pallet-box
+icon: flow
 ---
+
 # UI Patterns and Flows
 
-## Architecture
+### Architecture[#](broken-reference)
 
 The architecture of the Solid Data Wallet consists of a Backend-for-Frontend web application pattern with these key components:
 
@@ -16,7 +17,7 @@ The architecture of the Solid Data Wallet consists of a Backend-for-Frontend web
   * Invoking ESS Access Grants for consent flows
   * Fetching WebID information
 
-## Storage Organization
+### Storage Organization[#](broken-reference)
 
 The Wallet uses these containers at provision time:
 
@@ -25,9 +26,9 @@ The Wallet uses these containers at provision time:
 * `/accessgrants`
 * `/accessrequests`
 
-## Access Requests and Grants
+### Access Requests and Grants[#](broken-reference)
 
-### Managing Requests
+#### Managing Requests[#](broken-reference)
 
 The Wallet Service manages Access Requests and Grants within storage. Key functions include:
 
@@ -36,7 +37,7 @@ The Wallet Service manages Access Requests and Grants within storage. Key functi
 * Moving approved requests to `/accessrequests`
 * Storing grants in `/accessgrants`
 
-### Grant Details
+#### Grant Details[#](broken-reference)
 
 Access Grants show:
 * Expiry date
@@ -44,20 +45,20 @@ Access Grants show:
 * Resource Name
 * Data Requester WebID info
 
-### Revoking Access
+#### Revoking Access[#](broken-reference)
 
 Users can revoke grants via the `/accessgrants/{id}` endpoint.
 
-## Resource Management
+### Resource Management[#](broken-reference)
 
-### Downloading Resources
+#### Downloading Resources[#](broken-reference)
 
 Users can:
 * Scan QR codes for resources
 * Store external resources in their Wallet
 * Have the Wallet Service securely save items
 
-### Sharing Resources
+#### Sharing Resources[#](broken-reference)
 
 The sharing flow:
 1. User generates a QR code with resource info
