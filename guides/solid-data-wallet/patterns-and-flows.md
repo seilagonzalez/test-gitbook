@@ -1,3 +1,6 @@
+---
+icon: pallet-box
+---
 # UI Patterns and Flows
 
 ## Architecture
