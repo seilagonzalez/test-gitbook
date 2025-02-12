@@ -16,7 +16,7 @@
 * [Solid Data Wallet](guides/solid-data-wallet/README.md)
   * [Installation](guides/solid-data-wallet/installation.md)
   * [Features](guides/solid-data-wallet/features.md)
-  * [UI Patterns and Flows](patterns-and-flows.md)
+  * [Wallet UI Patterns and Flows](wallet-patterns-and-flows.md)
 * [WebId Document Best Practices](guides/webid-document-best-practices.md)
 * [Editor](guides/editor.md)
 * [Markdown](guides/markdown.md)
