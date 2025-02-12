@@ -1,6 +1,5 @@
 ---
-description: HERE WE EXPLAIN HOW TO GET AN ACCOUNT IN POD SPACE AND KEY CONCEPTS
-icon: bullseye-arrow
+icon: arrow-right-to-bracket
 layout:
   title:
     visible: true
@@ -14,7 +13,7 @@ layout:
     visible: true
 ---
 
-# Quickstart
+# HOW TO CONNECT TO YOUR WALLET
 
 <figure><img src="https://gitbookio.github.io/onboarding-template-images/quickstart-hero.png" alt=""><figcaption></figcaption></figure>
 

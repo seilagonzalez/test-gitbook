@@ -1,0 +1,683 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" data-theme="auto">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>UI Patterns and Flows &#8212; Solid Data Wallet</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "auto";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "auto";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/inrupt.css?v=5ba135f4" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=a5603611"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'patterns-and-flows';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://docs.inrupt.com/ess/ess_versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '2.3 (Preview)';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <link rel="icon" href="https://docs.inrupt.com/inrupt_stickers_v2-03.png"/>
+    <link rel="index" title="Index" href="../genindex/" />
+    <link rel="search" title="Search" href="../search/" />
+    <link rel="prev" title="Features" href="../features/" />
+  
+  <meta name="robots" content="index" />
+  
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="2.3 (Preview)" />
+
+  <script type="text/javascript" src="https://inrupt.atlassian.net/s/d41d8cd98f00b204e9800998ecf8427e-T/azc3hx/b/8/c95134bc67d3a521bb3f4331beb9b804/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?locale=en-US&collectorId=41592d74"></script>
+<script type="text/javascript">
+ window.ATL_JQ_PAGE_PROPS = $.extend(window.ATL_JQ_PAGE_PROPS, {
+   fieldValues: {
+     description: 'On page: https://docs.inrupt.com/wallet/patterns-and-flows/ \n'
+   }
+ });
+</script>
+
+  <!-- Start of HubSpot Embed Code -->
+<script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/8738939.js"></script>
+<!-- End of HubSpot Embed Code -->
+
+  
+<!-- Google Analytics - setting at shared themes/inrupt/conf.py option is insufficient -->
+
+  <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-PCJ702TZHN"></script>
+  <script>
+             window.dataLayer = window.dataLayer || [];
+             function gtag(){ dataLayer.push(arguments); }
+             gtag('js', new Date());
+             gtag('config', 'G-PCJ702TZHN');
+  </script>
+<!-- End Google Analytics -->
+
+<!-- Start cookieyes banner --> <script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/0faf0b493b162b5a3821640b/script.js"></script> <!-- End cookieyes banner -->
+
+  
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="auto">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search/"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item"><!-- Override navbar-logo -->
+
+   <a class="navbar-brand" href="https://inrupt.com/">
+      <img src="https://docs.inrupt.com/inrupt-logo-small.svg" class="logo" alt="Inrupt logo">
+   </a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item"><!-- Override navbar-nav -->
+
+      <ul id="navbar-main-elements" class="bd-navbar-elements navbar-nav">
+         <li class="nav-item">
+            <a class="nav-link" href="https://docs.inrupt.com/">Docs Home</a>
+         </li>
+         <li class="nav-item">
+            <a class="nav-link" href="https://docs.inrupt.com/ess/latest/">Enterprise Solid Server</a>
+         </li>
+         <div class="nav-item dropdown">
+            <button class="btn dropdown-toggle nav-item" type="button"  data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Developer Tools</button>
+            <div class="dropdown-menu">
+              <li class="nav-item ">
+                <a href="https://docs.inrupt.com/data-wallet/">Solid Data Wallet</a>
+              </li>
+              <li class="nav-item ">
+                  <a href="https://docs.inrupt.com/developer-tools/java/client-libraries/">Java Client Libraries</a>
+               </li>
+               <li class="nav-item ">
+                  <a href="https://docs.inrupt.com/developer-tools/javascript/client-libraries/">JavaScript Client Libraries</a>
+               </li>
+            </div>
+         </div>
+         <li class="nav-item">
+            <a class="nav-link" href="https://docs.inrupt.com/pod-spaces/">PodSpaces</a>
+         </li></ul>
+
+</div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://inrupt.atlassian.net/servicedesk" title="Support Desk" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fas fa-tools fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Support Desk</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://forum.solidproject.org/" title="Solid forum" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fas fa-users fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Solid forum</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://inrupt.com/blog" title="Inrupt Blog" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fas fa-blog fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Inrupt Blog</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item"><!-- Override navbar-nav -->
+
+      <ul id="navbar-main-elements" class="bd-navbar-elements navbar-nav">
+         <li class="nav-item">
+            <a class="nav-link" href="https://docs.inrupt.com/">Docs Home</a>
+         </li>
+         <li class="nav-item">
+            <a class="nav-link" href="https://docs.inrupt.com/ess/latest/">Enterprise Solid Server</a>
+         </li>
+         <div class="nav-item dropdown">
+            <button class="btn dropdown-toggle nav-item" type="button"  data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Developer Tools</button>
+            <div class="dropdown-menu">
+              <li class="nav-item ">
+                <a href="https://docs.inrupt.com/data-wallet/">Solid Data Wallet</a>
+              </li>
+              <li class="nav-item ">
+                  <a href="https://docs.inrupt.com/developer-tools/java/client-libraries/">Java Client Libraries</a>
+               </li>
+               <li class="nav-item ">
+                  <a href="https://docs.inrupt.com/developer-tools/javascript/client-libraries/">JavaScript Client Libraries</a>
+               </li>
+            </div>
+         </div>
+         <li class="nav-item">
+            <a class="nav-link" href="https://docs.inrupt.com/pod-spaces/">PodSpaces</a>
+         </li></ul>
+
+</div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://inrupt.atlassian.net/servicedesk" title="Support Desk" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fas fa-tools fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Support Desk</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://forum.solidproject.org/" title="Solid forum" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fas fa-users fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Solid forum</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://inrupt.com/blog" title="Inrupt Blog" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fas fa-blog fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Inrupt Blog</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<form class="bd-search d-flex align-items-center"
+      action="../search/"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+        <div class="sidebar-primary-item"><!-- Basically, a copy of the theme's sidebar-nav-bs but override the definition of sidebar_nav_html  -->
+<!-- The original definition of sidebar_nav_html is in the layout.html. It generates the section nav instead of root of doc. -->
+<!-- Also, including version-switcher and search-filed components here instead of in conf.py --><nav class="bd-links bd-docs-nav" aria-label="Main navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">
+    <a class="reference internal" href="../">Solid Data Wallet</a>
+  </p><div class="bd-toc-item navbar-nav">
+    <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../installation/">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../features/">Features</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">UI Patterns and Flows</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.inrupt.com/ess/2.3/services/service-wallet">Wallet Services</a></li>
+</ul>
+
+  </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">UI Patterns and Flows</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+
+
+  <!-- If using custom banner instead of theme's announcements setting-->
+
+  
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="ui-patterns-and-flows">
+<h1>UI Patterns and Flows<a class="headerlink" href="#ui-patterns-and-flows" title="Link to this heading">#</a></h1>
+<section id="architecture">
+<h2>Architecture<a class="headerlink" href="#architecture" title="Link to this heading">#</a></h2>
+<img alt="../_images/architecture.png" src="../_images/architecture.png" />
+<p>The architecture of the Solid Data Wallet consists of a <a class="reference external" href="https://www.inrupt.com/blog/backend-for-frontend-with-solid">Backend-for-Frontend</a> web application pattern with the following key components:</p>
+<p><strong>Data Wallet mobile application:</strong> The Wallet user-facing mobile application that users interact with. As of today, it communicates exclusively with Inrupt’s Enterprise Solid Server (ESS) Wallet Service.</p>
+<p><strong>ESS Wallet Service:</strong> The <a class="reference external" href="https://docs.inrupt.com/ess/2.3/services/service-wallet/" title="(in ESS v2.3)"><span class="xref std std-doc">Wallet Service</span></a> acts as an intermediary between the Wallet mobile app and the underlying ESS microservices. The Wallet Service is responsible for:</p>
+<ul class="simple">
+<li><p>Storing data in Pod Services.</p></li>
+<li><p>All CRUD operations for the Wallet.</p></li>
+<li><p>Provisioning the Wallet storage and the correct authorizations for containers like the inbox.</p></li>
+<li><p>Invoking the <a class="reference external" href="https://docs.inrupt.com/ess/latest/services/service-access-grant/" title="(in ESS v2.3)"><span class="xref std std-doc">ESS Access Grants</span></a> microservice to initiate a consent flow (Access Requests and Access Grants).</p></li>
+<li><p>Fetching the WebID from the <a class="reference external" href="https://docs.inrupt.com/ess/latest/services/service-webid/" title="(in ESS v2.3)"><span class="xref std std-doc">WebID Service</span></a> to obtain information about the Wallet user.</p></li>
+</ul>
+<p>The architecture diagram also includes two business data consumer applications that request data from the Wallet Service using Access Requests. The Wallet Service simplifies the management of Access Requests and the generation of Access Grants by communicating with the Access Grants Service and managing the Wallet inbox.</p>
+<p>The Wallet Service communicates with the microservices and other components using the <a class="reference external" href="https://solidproject.org/TR/protocol">Solid protocol</a>.</p>
+<p>The Identity Provider plays a key role in the authentication of both user and business data consumers.</p>
+<p>At the core of the Wallet security architecture lies a robust set of measures designed to protect the user’s data and ensure the integrity of all interactions. See more at <a class="reference external" href="https://docs.inrupt.com/ess/latest/security/" title="(in ESS v2.3)"><span class="xref std std-doc">Security</span></a>.</p>
+<ul>
+<li><p>Authentication: All Wallet endpoints are authenticated, so only authenticated entities can interact with Wallet Service and the Wallet.</p></li>
+<li><p>Authorization and Access Control: Only authorized applications are able to request access to data inside the Wallet. Access Requests and Grants are generated as tamper-proof <a class="reference external" href="https://www.w3.org/TR/2022/REC-vc-data-model-20220303/">Verifiable Credentials</a>.</p></li>
+<li><p>Encryption: All data transmitted to and from the Wallet is encrypted, ensuring user information remains confidential and protected from interception or unauthorized access during transit.</p></li>
+<li><p>Access Request Representation: In our Java SDK, Access Requests are returned as Verifiable Presentation (VPs), whereas in our JavaScript SDK and direct ESS API endpoints Access Requests are returned as a Verifiable Credentials (VCs). The Wallet Service only accepts VPs so if you are using the JavaScript SDK to integrate with the wallet, then you would need a handler to wrap the VCs as VPs.</p>
+<blockquote>
+<div><p>AR issued in Java SDK returns a VP.</p>
+<p>AR issued in JavaScript SDK returns a VC.</p>
+<p>Data Wallet service only accepts VPs.</p>
+<p>Other ESS endpoints return VCs.</p>
+</div></blockquote>
+</li>
+</ul>
+<section id="wallet-storage-organization">
+<h3>Wallet Storage Organization<a class="headerlink" href="#wallet-storage-organization" title="Link to this heading">#</a></h3>
+<p>The Wallet uses a simple storage structure to manage resources, receive requests for access to data, and manage the lifecycle of Access Requests and Grants. The following containers are created at provision time.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>/wallet
+/inbox
+/accessgrants
+/accessrequests
+</pre></div>
+</div>
+</section>
+<section id="manage-access-requests-and-grants">
+<h3>Manage Access Requests and Grants<a class="headerlink" href="#manage-access-requests-and-grants" title="Link to this heading">#</a></h3>
+<p>The Wallet Service is responsible for managing the state of Access Requests and Grants within the Wallet storage. The Wallet’s role is limited to initiating request actions and invoking the Wallet Service. The Wallet Service is responsible for creating new Access Grants. Most interactions involving the <code class="docutils literal notranslate"><span class="pre">/inbox</span></code>, <code class="docutils literal notranslate"><span class="pre">/wallet</span></code>, <code class="docutils literal notranslate"><span class="pre">/accessrequests</span></code>, and <code class="docutils literal notranslate"><span class="pre">/accessgrants</span></code> containers are exclusively managed by the Wallet Service.</p>
+<section id="list-pending-requests">
+<h4>List Pending Requests<a class="headerlink" href="#list-pending-requests" title="Link to this heading">#</a></h4>
+<p>Shows all pending Access Requests the user has not yet accepted or rejected.</p>
+<p>It reads the <code class="docutils literal notranslate"><span class="pre">/inbox</span></code> container, looks for active Access Requests that need to be addressed, and shows them to the user.</p>
+</section>
+<section id="approve-request">
+<h4>Approve Request<a class="headerlink" href="#approve-request" title="Link to this heading">#</a></h4>
+<p>The user is able to view an Access Request and approve or reject it. When the Access Request is approved, it moves from the <code class="docutils literal notranslate"><span class="pre">/inbox</span></code> to the <code class="docutils literal notranslate"><span class="pre">/accessrequests</span></code> container, and the Access Grant is stored in an <code class="docutils literal notranslate"><span class="pre">/accessgrants</span></code> container.</p>
+</section>
+<section id="list-active-access-grants-and-access-requests">
+<h4>List Active Access Grants and Access Requests<a class="headerlink" href="#list-active-access-grants-and-access-requests" title="Link to this heading">#</a></h4>
+<p>The Wallet Service calls the ESS <a class="reference external" href="https://docs.inrupt.com/ess/latest/services/service-access-grant/" title="(in ESS v2.3)"><span class="xref std std-doc">Access Grant Service</span></a> <a class="reference external" href="https://docs.inrupt.com/ess/latest/services/service-access-grant-derive/" title="(in ESS v2.3)"><span class="xref std std-doc">/derive</span></a> endpoint and brings back a list of all the active Access Grants. It fetches the revocation list and checks if any of the Access Grants returned have been revoked using the <a class="reference external" href="services/service-access-grant-verifier">/verify</a> endpoint.</p>
+<p>When the user switches to the Request or Access tabs in the Wallet, the Access Grants and Access Requests views on those tabs are synchronized with the ESS Access Grant Service.</p>
+</section>
+<section id="view-grant">
+<h4>View Grant<a class="headerlink" href="#view-grant" title="Link to this heading">#</a></h4>
+<p>Viewing an Access Grant displays the following attributes:</p>
+<ul class="simple">
+<li><p>Expiry date</p></li>
+<li><p>Purpose</p></li>
+<li><p>Resource Name</p></li>
+<li><p>Data Requester WebID, and information based on the Data Requester WebID</p></li>
+</ul>
+</section>
+<section id="revoke-grant">
+<h4>Revoke Grant<a class="headerlink" href="#revoke-grant" title="Link to this heading">#</a></h4>
+<p>A user can revoke an Access Grant by invoking the <code class="docutils literal notranslate"><span class="pre">/accessgrants/{id}</span></code> endpoint. Revoking a Grant will impact the <code class="docutils literal notranslate"><span class="pre">/accessgrants</span></code> container. It removes the active Grant stored in the <code class="docutils literal notranslate"><span class="pre">/accessgrants</span></code> container and calls the Access Grant service to revoke that Grant.</p>
+</section>
+</section>
+</section>
+<section id="download-a-resource-into-the-wallet">
+<h2>Download a Resource into the Wallet<a class="headerlink" href="#download-a-resource-into-the-wallet" title="Link to this heading">#</a></h2>
+<p>This pattern enables users to retrieve a resource from an external application and store it in their Wallet. When resources are available via QR codes, users can scan the QR code representing a resource and store it in their Wallet.</p>
+<img alt="../_images/download-resource.png" src="../_images/download-resource.png" />
+<p>The business data consumer application generates a QR code for a particular resource, such as a verifiable credential. The user then scans the QR code from the Wallet. The Wallet retrieves the resource and sends a request to the Wallet Service to securely store it.</p>
+</section>
+<section id="share-a-resource-with-a-third-party-application">
+<h2>Share a Resource with a Third-Party Application<a class="headerlink" href="#share-a-resource-with-a-third-party-application" title="Link to this heading">#</a></h2>
+<p>This pattern preserves the symmetry of an Access Request being made by a requesting party and approved (or rejected) by the user, yet is initiated by the user who initially generates the QR code. This pattern allows the user to interact with a service and share data without that service requiring prior knowledge of the user’s identity.</p>
+<p>First, the user selects a resource they wish to share from their Wallet with another party. Then, the Wallet generates a QR code, encompassing all the essential details needed by an external party to create an Access Request and dispatch it back to the user. Subsequently, the data requester creates an Access Request and awaits the user’s approval. Once the user approves the Request, the Access Grant will need to be communicated to the Requester through a webhook or inbox.</p>
+<p>The QR code includes a JSON object that contains the WebID and the resource location and holds all the necessary information to generate an Access Request for this resource.</p>
+<p>For example:</p>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;webid&quot;</span><span class="p">:</span><span class="s2">&quot;https://www.example.com/id&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;resource&quot;</span><span class="p">:</span><span class="s2">&quot;https://storage.inrupt.com/934ed7a345/wallet/IMG_0005.jpg&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<img alt="../_images/share-resource.png" src="../_images/share-resource.png" />
+<p>The sequence diagram shows the following:</p>
+<ul class="simple">
+<li><p>The Wallet creates a QR code to share the resource.</p></li>
+<li><p>The third-party application scans the QR code, which includes the WebID and Resource URL.</p></li>
+<li><p>Using the WebID, the third-party app can dereference the WebID and obtain the inbox URL from the WebID document.</p></li>
+<li><p>The third-party application initiates an Access Request using the QR code information.</p></li>
+<li><p>The user receives the Access Requests in the Wallet Inbox and accepts the Request.</p></li>
+<li><p>The Wallet Service then contacts the <a class="reference external" href="https://docs.inrupt.com/ess/latest/services/service-access-grant/" title="(in ESS v2.3)"><span class="xref std std-doc">ESS Access Grant Service</span></a> to generate an Access Grant and moves the Access Request from the Inbox to the <code class="docutils literal notranslate"><span class="pre">/accessrequests</span></code> container. When the Access Grant is received, a copy will be stored in the <code class="docutils literal notranslate"><span class="pre">/accessgrants</span></code> container.</p></li>
+<li><p>The Access Grant is transmitted via webhook or callback to the third-party application, enabling them to execute a read operation on the data.</p></li>
+</ul>
+</section>
+<section id="sharing-wallet-digital-identity">
+<h2>Sharing Wallet Digital Identity<a class="headerlink" href="#sharing-wallet-digital-identity" title="Link to this heading">#</a></h2>
+<p>This scenario discusses how users can share their Wallet’s identity with a third-party application using a QR code. The third-party application can scan a user’s Wallet identity (WebID), which allows the third-party application to generate an Access Request and send it to the Inbox. This capability enables a user to present their WebID for use by other services in the future.</p>
+<img alt="../_images/share-identity.png" src="../_images/share-identity.png" />
+<p>In this pattern, the external application submits a file to be stored in the user’s Wallet. This scenario is akin to scanning a QR code from a generated resource, but for the WebID profile. The profile tab contains a QR code with the embedded WebID. By dereferencing the WebID, the external application will know where to request permission to write data in the Wallet, triggering the consent flow.</p>
+<p>The external application scans the profile QR code and issues an Access Request to write in the inbox. After the user accepts the Request, the Grant is stored in an <code class="docutils literal notranslate"><span class="pre">/accessgrants</span></code> container.</p>
+</section>
+<section id="scan-a-qr-code-to-share-a-resource">
+<h2>Scan a QR code to share a resource<a class="headerlink" href="#scan-a-qr-code-to-share-a-resource" title="Link to this heading">#</a></h2>
+<p>This pattern enables a user to scan a QR code and subsequently share data with a third party. For instance, this could apply to a car rental website. In this situation, the user scans a QR code, enabling the Wallet to initiate an access prompt. The QR code will encompass the application clientID and data type, which the Wallet activates with the necessary information to send the user an Access Request.</p>
+<p>The flow works as follows:</p>
+<ul class="simple">
+<li><p>A user wants to interact with services, yet the services don’t know anything about the user in advance. The service needs enough information about the user to make an Access Request.</p></li>
+<li><p>The role of the Access Prompt endpoint is to allow the user’s wallet to interact with it so that it can supply details about itself (about the user) to the service.</p></li>
+<li><p>In this implementation, we have encoded the resource type and service cliendID in the QR code that initiates this flow, so that the Wallet UI can determine which resource is going to satisfy the service’s needs. For example, If the initial QR code comes from a car rental company, it might want a driving license credential.</p></li>
+</ul>
+<img alt="../_images/access-prompt.png" src="../_images/access-prompt.png" />
+<p>In the sequence diagram, the Wallet scans a QR code that will activate the access prompt endpoint. The data requester app will encounter this prompt with the user information (WebID) and requested details, such as driving license credentials. The data requester app will seek access to this data and send an Access Request to the Inbox, which is configured to have public write access. Once the user accepts, they will receive an active Access Grant in the Access section of the Wallet, enabling the data requester application to read the driver’s license.</p>
+</section>
+</section>
+
+
+                </article>
+              
+
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../features/"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Features</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#architecture">Architecture</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wallet-storage-organization">Wallet Storage Organization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#manage-access-requests-and-grants">Manage Access Requests and Grants</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#list-pending-requests">List Pending Requests</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#approve-request">Approve Request</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#list-active-access-grants-and-access-requests">List Active Access Grants and Access Requests</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#view-grant">View Grant</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#revoke-grant">Revoke Grant</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-a-resource-into-the-wallet">Download a Resource into the Wallet</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#share-a-resource-with-a-third-party-application">Share a Resource with a Third-Party Application</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sharing-wallet-digital-identity">Sharing Wallet Digital Identity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scan-a-qr-code-to-share-a-resource">Scan a QR code to share a resource</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025 Inrupt Inc.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+  </body>
+</html>
