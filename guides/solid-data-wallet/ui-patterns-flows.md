@@ -1,5 +1,5 @@
 ---
-icon: flow
+icon: pallet-box
 ---
 
 # UI Patterns and Flows
