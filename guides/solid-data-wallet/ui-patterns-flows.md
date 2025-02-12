@@ -74,6 +74,8 @@ Example QR code data:
   "resource": "https://storage.inrupt.com/934ed7a345/wallet/IMG_0005.jpg"
 }
 ```
-<a href="https://documenter.getpostman.com/view/20774119/2sAYXCiy23">
-{% embed url="https://run.pstmn.io/button.svg" %}
-</a>
+{% embed url="https://documenter.getpostman.com/view/20774119/2sAYXCiy23" %}
+
+{% hint style="info" %}
+[<img src="https://run.pstmn.io/button.svg" alt="Run in Postman" style="height: 25px;">](https://documenter.getpostman.com/view/20774119/2sAYXCiy23)
+{% endhint %}
