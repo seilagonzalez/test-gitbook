@@ -52,4 +52,5 @@ async function initializeAndLoginSession(): Promise<Session | null> {
     console.error("Error during login:", error);
     return null;
   }
-}```
+}
+{% endcode %}
