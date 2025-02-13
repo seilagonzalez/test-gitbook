@@ -1,6 +1,0 @@
----
-icon: book
----
-
-# GET DATA
-

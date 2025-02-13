@@ -1,5 +1,5 @@
 ---
-description: HERE WE EXPLAIN HOW TO GET AN ACCOUNT IN POD SPACE AND KEY CONCEPTS
+description: HERE WE EXPLAIN HOW TO GET AN ACCOUNT IN POD SPACES AND KEY CONCEPTS
 icon: bullseye-arrow
 layout:
   title:
@@ -16,20 +16,40 @@ layout:
 
 # Quickstart
 
-<figure><img src="https://gitbookio.github.io/onboarding-template-images/quickstart-hero.png" alt=""><figcaption></figcaption></figure>
+This guide will help you get started using our API. Follow these steps to quickly begin managing data.
 
-Beautiful documentation starts with the content you create — and GitBook makes it easy to get started with any pre-existing content.
+### Get an Account[#](broken-reference)
 
-{% hint style="info" %}
-Want to learn about writing content from scratch? Head to the [Basics](https://github.com/GitbookIO/onboarding-template/blob/main/getting-started/broken-reference/README.md) section to learn more.
-{% endhint %}
+1. Create your account at [https://start.inrupt.com](https://start.inrupt.com)
+2. Save your API credentials securely
+3. You are now able to use our sandbox environment Pod Spaces.
 
-### Import
+### Generate CCs[#](broken-reference)
 
-GitBook supports importing content from many popular writing tools and formats. If your content already exists, you can upload a file or group of files to be imported.
+1. To generate your client credentials: 
+   Go to this page to register your app. [https://login.inrupt.com/registration.html](https://login.inrupt.com/registration.html)
+2. Use the client credential to create a session.
 
-<div data-full-width="false"><figure><img src="https://gitbookio.github.io/onboarding-template-images/quickstart-import.png" alt=""><figcaption></figcaption></figure></div>
-
-### Sync a repository
-
-GitBook also allows you to set up a bi-directional sync with an existing repository on GitHub or GitLab. Setting up Git Sync allows you and your team to write content in GitBook or in code, and never have to worry about your content becoming out of sync.
+{% code title="session.ts" %}
+```typescript
+async function initializeAndLoginSession(): Promise<Session | null> {
+  const session = new Session();
+  try {
+    await session.login({
+      clientId: process.env.CLIENT_ID,
+      clientSecret: process.env.CLIENT_SECRET,
+      oidcIssuer: process.env.IDP,
+      tokenType: "Bearer", //no supported DPop
+    });
+    if (session.info.isLoggedIn && session.info.webId) {
+      console.log("Session logged in successfully with WebID");
+      return session;
+    } else {
+      console.error("User is not logged in");
+      return null;
+    }
+  } catch (error) {
+    console.error("Error during login:", error);
+    return null;
+  }
+}```
