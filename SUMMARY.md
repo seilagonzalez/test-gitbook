@@ -5,10 +5,7 @@
 ## Getting Started
 
 * [Quickstart](getting-started/quickstart.md)
-* [Create Your First Wallet](getting-started/create-your-first-wallet/README.md)
-  * [HOW TO CONNECT TO YOUR WALLET](getting-started/create-your-first-wallet/how-to-connect-to-your-wallet.md)
-  * [POST DATA](getting-started/create-your-first-wallet/post-data.md)
-  * [GET DATA](getting-started/create-your-first-wallet/get-data.md)
+* [Key Concepts](getting-started/quickstart-1.md)
 * [Access Grants](getting-started/access-grants.md)
 
 ## GUIDES

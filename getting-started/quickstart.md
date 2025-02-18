@@ -1,5 +1,4 @@
 ---
-description: HERE WE EXPLAIN HOW TO GET AN ACCOUNT IN POD SPACES AND KEY CONCEPTS
 icon: bullseye-arrow
 layout:
   title:
@@ -24,11 +23,9 @@ This guide will help you get started using our API. Follow these steps to quickl
 2. Save your API credentials securely
 3. You are now able to use our sandbox environment Pod Spaces.
 
-### Generate CCs[#]https://login.inrupt.com/registration.html)
+### Generate CCs\[#]https://login.inrupt.com/registration.html)
 
-1. To generate your client credentials: 
-   Go to this page to register your app. [https://login.inrupt.com/registration.html](https://login.inrupt.com/registration.html)
-
+1. To generate your client credentials: Go to this page to register your app. [https://login.inrupt.com/registration.html](https://login.inrupt.com/registration.html)
 2. Use the client credential to create a session.
 
 {% code title="session.ts" %}
@@ -54,10 +51,13 @@ async function initializeAndLoginSession(): Promise<Session | null> {
     return null;
   }
 }
+```
 {% endcode %}
-POST Data#
-{% code title="uploadData.ts" %}
 
+3. Now include some data in the Wallet.
+
+```typescript
+PUT Data#
 async function uploadFile() {
   const session = await initializeAndLoginSession();
   const walletAPI = "https://datawallet.inrupt.com";
@@ -88,8 +88,13 @@ async function uploadFile() {
   }
 }
 
+```
+
+4. Fetch data from Wallet.
+
+```typescript
+
 GET Data#
-{% code title="getData.ts" %}
 async function getData() {
   const session = await initializeAndLoginSession();
   const endpoint = "https://datawallet.inrupt.com";
@@ -109,3 +114,5 @@ async function getData() {
     return null;
   }
 }
+```
+
