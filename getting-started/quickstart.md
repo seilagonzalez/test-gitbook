@@ -32,24 +32,20 @@ This guide will help you get started using our API. Follow these steps to quickl
 ```typescript
 async function initializeAndLoginSession(): Promise<Session | null> {
   const session = new Session();
-  try {
-    await session.login({
-      clientId: process.env.CLIENT_ID,
-      clientSecret: process.env.CLIENT_SECRET,
-      oidcIssuer: "https://login.inrupt.com",
-      tokenType: "Bearer", //no supported DPop
-    });
-    if (session.info.isLoggedIn && session.info.webId) {
-      console.log("Session logged in successfully with WebID");
-      return session;
-    } else {
-      console.error("User is not logged in");
-      return null;
-    }
-  } catch (error) {
-    console.error("Error during login:", error);
+  await session.login({
+    clientId: process.env.CLIENT_ID,
+    clientSecret: process.env.CLIENT_SECRET,
+    oidcIssuer: "https://login.inrupt.com",
+    tokenType: "Bearer", 
+  });
+  if (session.info.isLoggedIn && session.info.webId) {
+    console.log("Session logged in successfully with WebID");
+    return session;
+  } else {
+    console.error("User is not logged in");
     return null;
   }
+
 }
 ```
 {% endcode %}
@@ -62,30 +58,26 @@ async function uploadFile() {
   const session = await initializeAndLoginSession();
   const walletAPI = "https://datawallet.inrupt.com";
   const fileName= "Name of the file";
-  try {
-    const path = "path/where/the/file/is/located"+fileName;
-    const fileBuffer = await readFile(path);
+  const path = "path/where/the/file/is/located"+text.txt;
+  const fileBuffer = await readFile(path);
 
-    const formData = new FormData();
+  const formData = new FormData();
 
-    const file = new File([fileBuffer], path);
-    formData.append("file", file);
+  const file = new File([fileBuffer], path);
+  formData.append("file", file);
 
-    formData.append("fileName", fileName);
-    const response = await session?.fetch(walletAPI, {
-      method: "PUT",
-      body: formData,
-    });
+  formData.append("fileName", fileName);
+  const response = await session?.fetch(walletAPI, {
+    method: "PUT",
+    body: formData,
+  });
 
-    if (response?.status === 200) {
-      return "File uploaded sucessfully";
-    } else {
-      console.log(response);
-    }
-  } catch (error) {
-    console.error("Error uploading file:", error);
-    throw error;
+  if (response?.status === 200) {
+    return "File uploaded sucessfully";
+  } else {
+    console.log(response);
   }
+ 
 }
 
 ```
@@ -95,50 +87,43 @@ async function uploadFile() {
 ```typescript
 
 GET Data#
-async function getData() {
+async function getFile() {
+
   const session = await initializeAndLoginSession();
-  const endpoint = "https://datawallet.inrupt.com";
-  try {
-    const response = await session?.fetch(endpoint, {
-      method: "GET"
-    });
-    if (response?.status === 200) {
-      const data = await response.json();
-      return data;
-    } else {
-      console.error("Error getting data:", response?.status);
-      return null;
-    }
-  } catch (error) {
-    console.error("Error:", error);
-    return null;
+  const walletContainer = `${process.env.WALLET_API}/wallet`;
+  const file = walletContainer + "/text.txt";
+  if (!session) {
+    throw new Error("Session is undefined");
   }
+    const response = await session.fetch(file, {
+    method: "GET",
+  });
+  if (response.status === 200) {
+    const fetchCredential = await response.text();
+    return fetchCredential;
+  }
+
 }
+
 ```
-
-
 
 ## Delete data from the Wallet
 
 ```typescript
 
-async function deleteFile(name: string) {
-  try {
-    const session = await initializeAndLoginSession();
-    const walletAPI = `${process.env.WALLET_API}/wallet`;
-    const fullname = walletAPI + "/" + name;
-    if (!session) {
-      throw new Error("Session is undefined");
-    }
-    const response = await session.fetch(fullname, {
-      method: "DELETE",
-    });
-    if (response.status === 200) {
-      return "file deleted successfully";
-    }
-  } catch {
-    console.error("Error fetching wallet data:", error);
-    throw error;
+async function deleteFile() {
+
+  const session = await initializeAndLoginSession();
+  const walletContainer = `${process.env.WALLET_API}/wallet`;
+  const fullname = walletContainer + "/text.txt";
+  if (!session) {
+    throw new Error("Session is undefined");
+  }
+  const response = await session.fetch(fullname, {
+    method: "DELETE",
+  });
+  if (response.status === 200) {
+    return "file deleted successfully";
   }
 }
 ```
