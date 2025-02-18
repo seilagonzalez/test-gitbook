@@ -1,6 +1,5 @@
 ---
 icon: address-card
-coverY: 0
 ---
 
 # WebId Document Best Practices
@@ -41,21 +40,18 @@ Optionally, the profile could include a list of extended WebID Documents. These 
 
 **Example of the minimum requirement for a WebID Document**
 
-<mark style="color:purple;">`<https://id.inrupt.com/dave>`</mark>
+```
+<https://id.inrupt.com/dave>
+a <http://xmlns.com/foaf/0.1/Agent> ;
+<http://www.w3.org/ns/pim/space#storage>
+<https://storage.inrupt.com/bb79f34c-3e25-4b9d-9b68-0193e5491111/>;
+<http://www.w3.org/ns/solid/terms#oidcIssuer>
+<https://login.inrupt.com> ;
+<http://xmlns.com/foaf/0.1/isPrimaryTopicOf>
+<https://storage.inrupt.com/bb79f34c-3e25-4b9d-9b68-0193e5491111/profile>.
+```
 
-<mark style="color:purple;">`a <http://xmlns.com/foaf/0.1/Agent> ;`</mark>
 
-<mark style="color:purple;">`<http://www.w3.org/ns/pim/space#storage>`</mark>
-
-<mark style="color:purple;">`<https://storage.inrupt.com/bb79f34c-3e25-4b9d-9b68-0193e5491111/>;`</mark>
-
-<mark style="color:purple;">`<http://www.w3.org/ns/solid/terms#oidcIssuer>`</mark>
-
-<mark style="color:purple;">`<https://login.inrupt.com> ;`</mark>
-
-<mark style="color:purple;">`<http://xmlns.com/foaf/0.1/isPrimaryTopicOf>`</mark>
-
-<mark style="color:purple;">`<https://storage.inrupt.com/bb79f34c-3e25-4b9d-9b68-0193e5491111/profile>.`</mark>
 
 
 
@@ -73,31 +69,20 @@ The WebID Document can list multiple Identity Providers, which means more than o
 
 The WebID Document is the primary mechanism to discover Solid Wallet Storage so that applications and services can write or fetch data. In most deployments, the user will have one Solid Wallet Storage but also may have many. If multiple Wallet Storages are present, the WebID Document must contain some metadata to aid in selecting a Solid Wallet Storage. A common way to achieve this is by using _rdfs:label_ as a description property to provide human-readable labels written by the operator. For instance, if users utilize a health app, they could choose the "Health Wallet" rather than a "Finance Wallet."
 
-
-
-<mark style="color:purple;">`prefix foaf: <http://xmlns.com/foaf/0.1/>`</mark>
-
-<mark style="color:purple;">`prefix pim: <http://www.w3.org/ns/pim/space#>`</mark>
-
-<mark style="color:purple;">`prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>`</mark>
-
-<mark style="color:purple;">`prefix solid: <http://www.w3.org/ns/solid/terms#>`</mark>
-
-<mark style="color:purple;">`<https://id.inrupt.com/LindaSmith> a foaf:Person;`</mark>
-
-<mark style="color:purple;">`pim:storage <https://storage.inrupt.com/bb79f34c-3e25-4b9d-9b68-0193e5491111/>, <https://storage.inrupt.com/bb79f34c-3e25-4b9d-9b68-0193e5491112/>;`</mark>
-
-<mark style="color:purple;">`solid:oidcIssuer <https://login.inrupt.com> ;`</mark>
-
-<mark style="color:purple;">`foaf:isPrimaryTopicOf <https://storage.inrupt.com/bb79f34c-3e25-4b9d-9b68-0193e5491111/profile>.`</mark>
-
-<mark style="color:purple;">`<https://storage.inrupt.com/bb79f34c-3e25-4b9d-9b68-0193e5491111/> a pim:ControlledStorage;`</mark>
-
-<mark style="color:purple;">`rdfs:label "National Health Service Solid Wallet Storage"@en.`</mark>
-
-<mark style="color:purple;">`<https://storage.inrupt.com/bb79f34c-3e25-4b9d-9b68-0193e5493912/> a pim:ControlledStorage;`</mark>
-
-<mark style="color:purple;">`rdfs:label "Ward Bank Solid Wallet Storage"@en.`</mark>
+```
+prefix foaf: <http://xmlns.com/foaf/0.1/>
+prefix pim: <http://www.w3.org/ns/pim/space#>
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+prefix solid: <http://www.w3.org/ns/solid/terms#>
+<https://id.inrupt.com/LindaSmith> a foaf:Person;
+pim:storage <https://storage.inrupt.com/bb79f34c-3e25-4b9d-9b68-0193e5491111/>, <https://storage.inrupt.com/bb79f34c-3e25-4b9d-9b68-0193e5491112/>;
+solid:oidcIssuer <https://login.inrupt.com> ;
+foaf:isPrimaryTopicOf <https://storage.inrupt.com/bb79f34c-3e25-4b9d-9b68-0193e5491111/profile>.
+<https://storage.inrupt.com/bb79f34c-3e25-4b9d-9b68-0193e5491111/> a pim:ControlledStorage;
+rdfs:label "National Health Service Solid Wallet Storage"@en.
+<https://storage.inrupt.com/bb79f34c-3e25-4b9d-9b68-0193e5493912/> a pim:ControlledStorage;
+rdfs:label "Ward Bank Solid Wallet Storage"@en.
+```
 
 
 

@@ -17,13 +17,13 @@ layout:
 
 This guide will help you get started using our API. Follow these steps to quickly begin managing data.
 
-### Get an Account[#](https://start.inrupt.com)
+### Get an Account
 
 1. Create your account at [https://start.inrupt.com](https://start.inrupt.com)
 2. Save your API credentials securely
 3. You are now able to use our sandbox environment Pod Spaces.
 
-### Generate CCs\[#]https://login.inrupt.com/registration.html)
+### Generate Client Credentials&#x20;
 
 1. To generate your client credentials: Go to this page to register your app. [https://login.inrupt.com/registration.html](https://login.inrupt.com/registration.html)
 2. Use the client credential to create a session.
@@ -54,7 +54,7 @@ async function initializeAndLoginSession(): Promise<Session | null> {
 ```
 {% endcode %}
 
-3. Now include some data in the Wallet.
+## Load data in the Wallet
 
 ```typescript
 PUT Data#
@@ -90,7 +90,7 @@ async function uploadFile() {
 
 ```
 
-4. Fetch data from Wallet.
+## Get the Wallet Data
 
 ```typescript
 
@@ -116,3 +116,6 @@ async function getData() {
 }
 ```
 
+
+
+## Delete data from the Wallet
