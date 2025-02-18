@@ -119,3 +119,26 @@ async function getData() {
 
 
 ## Delete data from the Wallet
+
+```typescript
+
+async function deleteFile(name: string) {
+  try {
+    const session = await initializeAndLoginSession();
+    const walletAPI = `${process.env.WALLET_API}/wallet`;
+    const fullname = walletAPI + "/" + name;
+    if (!session) {
+      throw new Error("Session is undefined");
+    }
+    const response = await session.fetch(fullname, {
+      method: "DELETE",
+    });
+    if (response.status === 200) {
+      return "file deleted successfully";
+    }
+  } catch {
+    console.error("Error fetching wallet data:", error);
+    throw error;
+  }
+}
+```
