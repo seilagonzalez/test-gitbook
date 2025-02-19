@@ -21,7 +21,6 @@
   * [Features](guides/solid-data-wallet/features.md)
   * [UI Patterns and Flows](guides/solid-data-wallet/ui-patterns-flows.md)
 * [Editor](guides/editor.md)
-* [Markdown](guides/markdown.md)
 * [Images & media](guides/images-and-media.md)
 * [Interactive blocks](guides/interactive-blocks.md)
 * [OpenAPI](guides/openapi.md)

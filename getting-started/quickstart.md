@@ -23,12 +23,12 @@ This guide will help you get started using our API. Follow these steps to quickl
 2. Save your API credentials securely
 3. You are now able to use our sandbox environment Pod Spaces.
 
-### Generate Client Credentials&#x20;
+### Generate Client Credentials
 
 1. To generate your client credentials: Go to this page to register your app. [https://login.inrupt.com/registration.html](https://login.inrupt.com/registration.html)
 2. Use the client credential to create a session.
 
-{% code title="session.ts" %}
+{% code title="Session" %}
 ```typescript
 async function initializeAndLoginSession(): Promise<Session | null> {
   const session = new Session();
@@ -53,12 +53,11 @@ async function initializeAndLoginSession(): Promise<Session | null> {
 ## Load data in the Wallet
 
 ```typescript
-PUT Data#
+PUT Data
 async function uploadFile() {
   const session = await initializeAndLoginSession();
-  const walletAPI = "https://datawallet.inrupt.com";
-  const fileName= "Name of the file";
-  const path = "path/where/the/file/is/located"+text.txt;
+  const walletContainer ="https://datawallet.inrupt.com/wallet"
+  const path = "path/where/the/file/is/located"+"/text.txt";
   const fileBuffer = await readFile(path);
 
   const formData = new FormData();
@@ -67,7 +66,7 @@ async function uploadFile() {
   formData.append("file", file);
 
   formData.append("fileName", fileName);
-  const response = await session?.fetch(walletAPI, {
+  const response = await session?.fetch(walletContainer, {
     method: "PUT",
     body: formData,
   });
@@ -86,11 +85,11 @@ async function uploadFile() {
 
 ```typescript
 
-GET Data#
+GET Data
 async function getFile() {
 
   const session = await initializeAndLoginSession();
-  const walletContainer = `${process.env.WALLET_API}/wallet`;
+  const walletContainer ="https://datawallet.inrupt.com/wallet";
   const file = walletContainer + "/text.txt";
   if (!session) {
     throw new Error("Session is undefined");
@@ -110,16 +109,16 @@ async function getFile() {
 ## Delete data from the Wallet
 
 ```typescript
-
+Delete Data
 async function deleteFile() {
 
   const session = await initializeAndLoginSession();
-  const walletContainer = `${process.env.WALLET_API}/wallet`;
-  const fullname = walletContainer + "/text.txt";
+  const walletContainer = "https://datawallet.inrupt.com/wallet"
+  const file = walletContainer + "/text.txt";
   if (!session) {
     throw new Error("Session is undefined");
   }
-  const response = await session.fetch(fullname, {
+  const response = await session.fetch(file, {
     method: "DELETE",
   });
   if (response.status === 200) {
