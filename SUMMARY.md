@@ -11,7 +11,7 @@
 ***
 
 * [START DEVELOPING](start-developing/README.md)
-  * [MAKE YOUR FIRST BUSINESS APP](start-developing/make-your-first-business-app.md)
+  * [Make your first Business Application](start-developing/make-your-first-business-app.md)
 
 ## INDEPTH GUIDES
 
@@ -20,12 +20,3 @@
   * [Installation](guides/solid-data-wallet/installation.md)
   * [Features](guides/solid-data-wallet/features.md)
   * [UI Patterns and Flows](guides/solid-data-wallet/ui-patterns-flows.md)
-* [Editor](guides/editor.md)
-* [Images & media](guides/images-and-media.md)
-* [Interactive blocks](guides/interactive-blocks.md)
-* [OpenAPI](guides/openapi.md)
-* [Integrations](guides/integrations.md)
-
-## KEY CONCEPTS
-
-* [Definitions](key-concepts/definitions.md)
