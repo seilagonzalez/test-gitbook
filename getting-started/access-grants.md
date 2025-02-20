@@ -21,9 +21,8 @@ Things that you need to know:
 3. The location of the resource you want to access
 4. Create a session for the business application.
 
-````
-// Some code
 ```javascript
+
 import { issueAccessRequest } from "@inrupt/solid-client-access-grants";
     const vcData = await issueAccessRequest(
       {
@@ -38,13 +37,12 @@ import { issueAccessRequest } from "@inrupt/solid-client-access-grants";
     );
 
 ```
-````
 
 
 
 ### Send the Access Request to the Inbox
 
-```
+```javascript
 const inboxUrl = new URL('inbox/', userWalletStorage).toString();
 const vcId = vcData.id.substring('https://vc.inrupt.com/vc/'.length);
 
